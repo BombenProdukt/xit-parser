@@ -10,8 +10,6 @@ enum Color: string
 
     case Black = '#112026';
 
-    case Gray = '#8f8f8f';
-
     case Open = '#73daff';
 
     case Checked = '#a9ff6b';

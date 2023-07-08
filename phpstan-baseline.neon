@@ -31,6 +31,21 @@ parameters:
 			path: src/Data/DocumentItemModifiers.php
 
 		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: src/Element/Class/AbstractElement.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: src/Element/Style/AbstractElement.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: src/Element/Tailwind/AbstractElement.php
+
+		-
 			message: "#^Parameter \\#1 \\$content of method BombenProdukt\\\\Xit\\\\Parser\\\\ModifierParser\\:\\:parse\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Parser/DocumentParser.php
