@@ -101,7 +101,7 @@ abstract readonly class AbstractHtmlRenderer implements RendererInterface
 
         if ($item->getModifiers()->getDue() !== null) {
             $itemContent = \str_replace(
-                $item->getModifiers()->getDue(),
+                '-> '.$item->getModifiers()->getDue(),
                 (string) $this->createDueElement($item->getModifiers()->getDue()),
                 $itemContent,
             );
