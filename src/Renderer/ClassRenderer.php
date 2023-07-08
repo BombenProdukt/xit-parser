@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace BombenProdukt\Xit\Renderer;
 
 use BombenProdukt\Xit\Data\Document;
-use BombenProdukt\Xit\Element\Tailwind\Checked;
-use BombenProdukt\Xit\Element\Tailwind\Due;
-use BombenProdukt\Xit\Element\Tailwind\InQuestion;
-use BombenProdukt\Xit\Element\Tailwind\Obsolete;
-use BombenProdukt\Xit\Element\Tailwind\Ongoing;
-use BombenProdukt\Xit\Element\Tailwind\Open;
-use BombenProdukt\Xit\Element\Tailwind\Priority;
-use BombenProdukt\Xit\Element\Tailwind\Tag;
-use BombenProdukt\Xit\Element\Tailwind\Title;
+use BombenProdukt\Xit\Element\Class\Checked;
+use BombenProdukt\Xit\Element\Class\Due;
+use BombenProdukt\Xit\Element\Class\InQuestion;
+use BombenProdukt\Xit\Element\Class\Obsolete;
+use BombenProdukt\Xit\Element\Class\Ongoing;
+use BombenProdukt\Xit\Element\Class\Open;
+use BombenProdukt\Xit\Element\Class\Priority;
+use BombenProdukt\Xit\Element\Class\Tag;
+use BombenProdukt\Xit\Element\Class\Title;
 use BombenProdukt\Xit\Enum\ItemStatus;
 use BombenProdukt\Xit\Enum\ItemType;
 
-final readonly class TailwindRenderer implements RendererInterface
+final readonly class ClassRenderer implements RendererInterface
 {
     public function render(Document $document): string
     {

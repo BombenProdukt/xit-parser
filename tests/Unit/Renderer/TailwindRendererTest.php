@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\Renderer;
 
 use BombenProdukt\Xit\Parser\DocumentParser;
 use BombenProdukt\Xit\Renderer\TailwindRenderer;

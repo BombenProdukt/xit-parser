@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Tests\Unit\Renderer;
 
 use BombenProdukt\Xit\Parser\DocumentParser;
-use BombenProdukt\Xit\Renderer\DocumentRenderer;
+use BombenProdukt\Xit\Renderer\ClassRenderer;
 use function Spatie\Snapshots\assertMatchesSnapshot;
 
 it('should render the document', function (): void {
     $parser = new DocumentParser();
     $parsed = $parser->parse(xit());
 
-    $renderer = new DocumentRenderer();
+    $renderer = new ClassRenderer();
 
     assertMatchesSnapshot($renderer->render($parsed));
 });
