@@ -9,7 +9,7 @@ use BombenProdukt\Xit\Enum\ItemStatus;
 use BombenProdukt\Xit\Enum\ItemStatusCharacter;
 use BombenProdukt\Xit\Enum\ItemType;
 
-final readonly class DocumentRenderer implements RendererInterface
+final readonly class TextRenderer implements RendererInterface
 {
     public function render(Document $document): string
     {

@@ -103,29 +103,29 @@ parameters:
 		-
 			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 2
-			path: src/Renderer/DocumentRenderer.php
+			path: src/Renderer/TextRenderer.php
 
 		-
 			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
-			path: src/Renderer/DocumentRenderer.php
+			path: src/Renderer/TextRenderer.php
 
 		-
 			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
-			path: src/Renderer/DocumentRenderer.php
+			path: src/Renderer/TextRenderer.php
 
 		-
 			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
-			path: src/Renderer/DocumentRenderer.php
+			path: src/Renderer/TextRenderer.php
 
 		-
 			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 2
-			path: src/Renderer/DocumentRenderer.php
+			path: src/Renderer/TextRenderer.php
 
 		-
 			message: "#^Right side of \\|\\| is always true\\.$#"
 			count: 1
-			path: src/Renderer/DocumentRenderer.php
+			path: src/Renderer/TextRenderer.php
