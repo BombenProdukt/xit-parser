@@ -6,8 +6,8 @@ namespace BombenProdukt\Xit\Element\Class;
 
 final class Priority extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'xit-priority';
+        return '<span class="priority">%s</span>';
     }
 }

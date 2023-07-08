@@ -6,8 +6,8 @@ namespace BombenProdukt\Xit\Element\Tailwind;
 
 final class Tag extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'text-xit-tag';
+        return '<span class="text-xit-tag">%s</span>';
     }
 }

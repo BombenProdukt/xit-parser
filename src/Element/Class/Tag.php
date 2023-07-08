@@ -6,8 +6,8 @@ namespace BombenProdukt\Xit\Element\Class;
 
 final class Tag extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'xit-tag';
+        return '<span class="tag">%s</span>';
     }
 }

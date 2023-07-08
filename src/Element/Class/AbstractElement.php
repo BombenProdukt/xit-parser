@@ -15,11 +15,7 @@ abstract class AbstractElement implements Stringable
 
     public function __toString(): string
     {
-        return \sprintf(
-            '<span class="%s">%s</span>',
-            $this->getClass(),
-            $this->getText(),
-        );
+        return \sprintf($this->getHtml(), $this->getText());
     }
 
     public static function fromString(string $text): static
@@ -32,5 +28,5 @@ abstract class AbstractElement implements Stringable
         return $this->text;
     }
 
-    abstract protected function getClass(): string;
+    abstract protected function getHtml(): string;
 }

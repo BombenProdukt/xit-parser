@@ -6,8 +6,8 @@ namespace BombenProdukt\Xit\Element\Tailwind;
 
 final class Priority extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'text-xit-priority';
+        return '<span class="text-xit-priority">%s</span>';
     }
 }

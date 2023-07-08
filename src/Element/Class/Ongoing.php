@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Class;
 
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+
 final class Ongoing extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'xit-ongoing';
+        return '<div class="item ongoing"><span class="checkbox">['.ItemStatusCharacter::Ongoing->value.']</span><p>%s</p></div>';
     }
 }

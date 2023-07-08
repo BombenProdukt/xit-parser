@@ -6,8 +6,8 @@ namespace BombenProdukt\Xit\Element\Tailwind;
 
 final class Title extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'text-xit-title underline';
+        return '<div class="text-xit-title underline"><span>%s</span></div>';
     }
 }

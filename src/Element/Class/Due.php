@@ -6,8 +6,8 @@ namespace BombenProdukt\Xit\Element\Class;
 
 final class Due extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'xit-due';
+        return '<span class="due">%s</span>';
     }
 }

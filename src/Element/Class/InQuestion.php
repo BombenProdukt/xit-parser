@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Class;
 
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+
 final class InQuestion extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'xit-in-question';
+        return '<div class="item in-question"><span class="checkbox">['.ItemStatusCharacter::InQuestion->value.']</span><p>%s</p></div>';
     }
 }

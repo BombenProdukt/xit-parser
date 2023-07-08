@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Tailwind;
 
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+
 final class Open extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'text-xit-open';
+        return '<div><span class="text-xit-open">['.ItemStatusCharacter::Open->value.']</span><p>%s</p></div>';
     }
 }

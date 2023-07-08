@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Tailwind;
 
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+
 final class Ongoing extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'text-xit-ongoing';
+        return '<div><span class="text-xit-ongoing">['.ItemStatusCharacter::Ongoing->value.']</span><p>%s</p></div>';
     }
 }

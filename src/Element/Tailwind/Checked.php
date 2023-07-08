@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Tailwind;
 
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+
 final class Checked extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'text-xit-checked';
+        return '<div><span class="text-xit-checked">['.ItemStatusCharacter::Checked->value.']</span><p>%s</p></div>';
     }
 }

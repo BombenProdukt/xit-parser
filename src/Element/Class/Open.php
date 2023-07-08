@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Class;
 
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+
 final class Open extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'xit-open';
+        return '<div class="item open"><span class="checkbox">['.ItemStatusCharacter::Open->value.']</span><p>%s</p></div>';
     }
 }

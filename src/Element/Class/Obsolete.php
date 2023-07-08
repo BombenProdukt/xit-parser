@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Class;
 
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+
 final class Obsolete extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'xit-obsolete';
+        return '<div class="item obsolete"><span class="checkbox">['.ItemStatusCharacter::Obsolete->value.']</span><p>%s</p></div>';
     }
 }

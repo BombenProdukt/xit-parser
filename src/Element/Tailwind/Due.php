@@ -6,8 +6,8 @@ namespace BombenProdukt\Xit\Element\Tailwind;
 
 final class Due extends AbstractElement
 {
-    protected function getClass(): string
+    public function getHtml(): string
     {
-        return 'text-xit-due';
+        return '<span class="text-xit-due">-> %s</span>';
     }
 }
