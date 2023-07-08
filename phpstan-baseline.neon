@@ -33,17 +33,7 @@ parameters:
 		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
-			path: src/Element/Class/AbstractElement.php
-
-		-
-			message: "#^Unsafe usage of new static\\(\\)\\.$#"
-			count: 1
-			path: src/Element/Style/AbstractElement.php
-
-		-
-			message: "#^Unsafe usage of new static\\(\\)\\.$#"
-			count: 1
-			path: src/Element/Tailwind/AbstractElement.php
+			path: src/Element/AbstractElement.php
 
 		-
 			message: "#^Parameter \\#1 \\$content of method BombenProdukt\\\\Xit\\\\Parser\\\\ModifierParser\\:\\:parse\\(\\) expects string, string\\|null given\\.$#"
@@ -63,32 +53,32 @@ parameters:
 		-
 			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 2
-			path: src/Renderer/ClassRenderer.php
+			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
 			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
-			path: src/Renderer/ClassRenderer.php
+			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
 			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
-			path: src/Renderer/ClassRenderer.php
+			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
 			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
-			path: src/Renderer/ClassRenderer.php
+			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
 			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 2
-			path: src/Renderer/ClassRenderer.php
+			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
-			message: "#^Parameter \\#1 \\$text of static method BombenProdukt\\\\Xit\\\\Element\\\\Class\\\\AbstractElement\\:\\:fromString\\(\\) expects string, string\\|null given\\.$#"
-			count: 6
-			path: src/Renderer/ClassRenderer.php
+			message: "#^Parameter \\#1 \\$text of method BombenProdukt\\\\Xit\\\\Renderer\\\\AbstractHtmlRenderer\\:\\:createTitleElement\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
 			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
@@ -119,63 +109,3 @@ parameters:
 			message: "#^Right side of \\|\\| is always true\\.$#"
 			count: 1
 			path: src/Renderer/DocumentRenderer.php
-
-		-
-			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 2
-			path: src/Renderer/StyleRenderer.php
-
-		-
-			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 1
-			path: src/Renderer/StyleRenderer.php
-
-		-
-			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 1
-			path: src/Renderer/StyleRenderer.php
-
-		-
-			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 1
-			path: src/Renderer/StyleRenderer.php
-
-		-
-			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 2
-			path: src/Renderer/StyleRenderer.php
-
-		-
-			message: "#^Parameter \\#1 \\$text of static method BombenProdukt\\\\Xit\\\\Element\\\\Style\\\\AbstractElement\\:\\:fromString\\(\\) expects string, string\\|null given\\.$#"
-			count: 6
-			path: src/Renderer/StyleRenderer.php
-
-		-
-			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 2
-			path: src/Renderer/TailwindRenderer.php
-
-		-
-			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 1
-			path: src/Renderer/TailwindRenderer.php
-
-		-
-			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 1
-			path: src/Renderer/TailwindRenderer.php
-
-		-
-			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 1
-			path: src/Renderer/TailwindRenderer.php
-
-		-
-			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 2
-			path: src/Renderer/TailwindRenderer.php
-
-		-
-			message: "#^Parameter \\#1 \\$text of static method BombenProdukt\\\\Xit\\\\Element\\\\Tailwind\\\\AbstractElement\\:\\:fromString\\(\\) expects string, string\\|null given\\.$#"
-			count: 6
-			path: src/Renderer/TailwindRenderer.php

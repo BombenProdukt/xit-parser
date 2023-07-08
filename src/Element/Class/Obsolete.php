@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Class;
 
+use BombenProdukt\Xit\Element\AbstractElement;
 use BombenProdukt\Xit\Enum\ItemStatusCharacter;
 
 final class Obsolete extends AbstractElement

@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Style;
 
+use BombenProdukt\Xit\Element\AbstractElement;
 use BombenProdukt\Xit\Enum\Color;
 
 final class Title extends AbstractElement
 {
-    protected function getStyle(): string
+    public function getHtml(): string
     {
-        return \sprintf('color: %s; text-decoration: underline;', Color::White->value);
+        return '<span style="color: '.Color::White->value.'; text-decoration: underline;">%s</span>';
     }
 }

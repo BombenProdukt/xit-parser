@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\Xit\Element\Class;
-
-use BombenProdukt\Xit\Element\ElementInterface;
+namespace BombenProdukt\Xit\Element;
 
 abstract class AbstractElement implements ElementInterface
 {
