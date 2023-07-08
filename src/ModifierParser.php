@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit;
 
+use BombenProdukt\Xit\Data\DocumentItemModifiers;
+
 final readonly class ModifierParser
 {
     public function parse(string $content): DocumentItemModifiers

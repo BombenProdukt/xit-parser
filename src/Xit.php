@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit;
 
+use BombenProdukt\Xit\Data\Document;
+
 final readonly class Xit
 {
     public static function parse(string $content): Document

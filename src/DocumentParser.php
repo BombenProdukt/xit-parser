@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit;
 
+use BombenProdukt\Xit\Data\Document;
+use BombenProdukt\Xit\Data\DocumentGroup;
+use BombenProdukt\Xit\Data\DocumentItem;
 use Exception;
 
 final readonly class DocumentParser

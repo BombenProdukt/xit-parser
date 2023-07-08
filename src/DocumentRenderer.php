@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit;
 
+use BombenProdukt\Xit\Data\Document;
+
 final readonly class DocumentRenderer
 {
     public function render(Document $document): string
