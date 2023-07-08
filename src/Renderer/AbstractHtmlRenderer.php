@@ -22,25 +22,25 @@ abstract readonly class AbstractHtmlRenderer implements RendererInterface
             $currentItemContent = '';
 
             foreach ($items as $itemIndex => $item) {
-                if ($item->getType() === ItemType::Title) {
+                if ($item->getType() === ItemType::GroupTitle) {
                     $rendered .= $this->createTitleElement($item->getContent());
 
                     continue;
                 }
 
-                if ($item->getType() === ItemType::Item) {
+                if ($item->getType() === ItemType::ItemStart) {
                     $currentItemStatus = $item->getStatus();
                     $currentItemContent = $this->parseItem($item);
                 }
 
-                if ($item->getType() === ItemType::ItemDetails) {
+                if ($item->getType() === ItemType::ItemContinuation) {
                     $currentItemContent .= $this->parseItem($item).'<br>';
                 }
 
                 // We are reaching a new item...
                 $nextLine = $items[$itemIndex + 1] ?? null;
 
-                if ($nextLine?->getType() === ItemType::Item) {
+                if ($nextLine?->getType() === ItemType::ItemStart) {
                     $rendered .= $this->renderItem($currentItemStatus, \trim($currentItemContent, '<br>'));
 
                     continue;

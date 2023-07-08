@@ -17,13 +17,13 @@ final readonly class TextRenderer implements RendererInterface
 
         foreach ($document->getGroups() as $group) {
             foreach ($group->getItems() as $line) {
-                if ($line->getType() === ItemType::Title) {
+                if ($line->getType() === ItemType::GroupTitle) {
                     $rendered .= $line->getContent()."\n";
 
                     continue;
                 }
 
-                if ($line->getType() === ItemType::Item || ItemType::ItemDetails) {
+                if ($line->getType() === ItemType::ItemStart || ItemType::ItemContinuation) {
                     switch ($line->getStatus()) {
                         case ItemStatus::Open:
                             $rendered .= \sprintf('[%s] ', ItemStatusCharacter::Open->value);

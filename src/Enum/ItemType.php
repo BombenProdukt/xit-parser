@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Enum;
 
-enum ItemType: string
+enum ItemType
 {
-    case Title = 'title';
+    case GroupTitle;
 
-    case Item = 'item';
+    case ItemContinuation;
 
-    case ItemDetails = 'details';
+    case ItemStart;
 
-    case Newline = 'newline';
+    case NewLine;
 }

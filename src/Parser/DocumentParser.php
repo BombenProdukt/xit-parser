@@ -32,57 +32,57 @@ final readonly class DocumentParser
 
         foreach (\explode("\n", $content) as $lineNumber => $line) {
             if (\preg_match(RegularExpression::TITLE, $line)) {
-                $this->addDocumentItem($currentGroup, ItemType::Title, null, $line);
+                $this->addDocumentItem($currentGroup, ItemType::GroupTitle, null, $line);
 
-                $prevItemType = ItemType::Title;
+                $prevItemType = ItemType::GroupTitle;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::OPEN_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Open, $line);
+                $this->addDocumentItem($currentGroup, ItemType::ItemStart, ItemStatus::Open, $line);
 
-                $prevItemType = ItemType::Item;
+                $prevItemType = ItemType::ItemStart;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::CHECKED_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Checked, $line);
+                $this->addDocumentItem($currentGroup, ItemType::ItemStart, ItemStatus::Checked, $line);
 
-                $prevItemType = ItemType::Item;
+                $prevItemType = ItemType::ItemStart;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::ONGOING_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Ongoing, $line);
+                $this->addDocumentItem($currentGroup, ItemType::ItemStart, ItemStatus::Ongoing, $line);
 
-                $prevItemType = ItemType::Item;
+                $prevItemType = ItemType::ItemStart;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::OBSOLETE_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Obsolete, $line);
+                $this->addDocumentItem($currentGroup, ItemType::ItemStart, ItemStatus::Obsolete, $line);
 
-                $prevItemType = ItemType::Item;
+                $prevItemType = ItemType::ItemStart;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::IN_QUESTION_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::InQuestion, $line);
+                $this->addDocumentItem($currentGroup, ItemType::ItemStart, ItemStatus::InQuestion, $line);
 
-                $prevItemType = ItemType::Item;
+                $prevItemType = ItemType::ItemStart;
 
                 continue;
             }
 
-            if (($prevItemType === ItemType::Item || $prevItemType === ItemType::ItemDetails) && \preg_match(RegularExpression::ITEM_DETAILS, $line)) {
-                $this->addDocumentItem($currentGroup, ItemType::ItemDetails, null, $line);
+            if (($prevItemType === ItemType::ItemStart || $prevItemType === ItemType::ItemContinuation) && \preg_match(RegularExpression::ITEM_DETAILS, $line)) {
+                $this->addDocumentItem($currentGroup, ItemType::ItemContinuation, null, $line);
 
-                $prevItemType = ItemType::ItemDetails;
+                $prevItemType = ItemType::ItemContinuation;
 
                 continue;
             }
@@ -108,7 +108,7 @@ final readonly class DocumentParser
     {
         $readableContent = $content;
 
-        if ($type === ItemType::Item) {
+        if ($type === ItemType::ItemStart) {
             switch ($status) {
                 case ItemStatus::Open:
                     $readableContent = \preg_replace(RegularExpression::OPEN_ITEM, '', $readableContent);
@@ -137,7 +137,7 @@ final readonly class DocumentParser
             }
         }
 
-        if ($type === ItemType::Item || $type === ItemType::ItemDetails) {
+        if ($type === ItemType::ItemStart || $type === ItemType::ItemContinuation) {
             $readableContent = \preg_replace(RegularExpression::PRIORITY, '', $readableContent);
             $readableContent = \preg_replace(RegularExpression::DUE_DATE, '', $readableContent);
             $readableContent = \preg_replace(RegularExpression::TAG, '', $readableContent);
@@ -145,7 +145,7 @@ final readonly class DocumentParser
 
         $documentItem = new DocumentItem($type, $status);
 
-        if ($type === ItemType::Newline) {
+        if ($type === ItemType::NewLine) {
             $documentItem->setContent("\n");
         } else {
             $documentItem->setContent(\trim(\preg_replace("/[\n\r]*$/", '', $readableContent)));
@@ -153,13 +153,13 @@ final readonly class DocumentParser
 
         $trimmedRawContent = \preg_replace("/[\n\r]*$/", '', $content);
 
-        if ($type === ItemType::Newline) {
+        if ($type === ItemType::NewLine) {
             $documentItem->setRawContent("\n");
         } else {
             $documentItem->setRawContent($trimmedRawContent);
         }
 
-        if ($type === ItemType::Title || $type === ItemType::Newline) {
+        if ($type === ItemType::GroupTitle || $type === ItemType::NewLine) {
             $documentItem->setModifiers(null);
         } else {
             $documentItem->setModifiers($this->modifierParser->parse($trimmedRawContent));
