@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\Xit;
+namespace BombenProdukt\Xit\Renderer;
 
+use BombenProdukt\Xit\Constant;
 use BombenProdukt\Xit\Data\Document;
 
 final readonly class DocumentRenderer

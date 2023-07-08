@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use BombenProdukt\Xit\DocumentParser;
-use BombenProdukt\Xit\DocumentRenderer;
-use BombenProdukt\Xit\ModifierParser;
+use BombenProdukt\Xit\Parser\DocumentParser;
+use BombenProdukt\Xit\Renderer\DocumentRenderer;
 use function Spatie\Snapshots\assertMatchesSnapshot;
 
 it('should render the document', function (): void {
-    $parser = new DocumentParser(new ModifierParser());
-    $parsed = $parser->parse(\file_get_contents(__DIR__.'/../Fixtures/test.xit'));
+    $parser = new DocumentParser();
+    $parsed = $parser->parse(xit());
 
     $renderer = new DocumentRenderer();
 
