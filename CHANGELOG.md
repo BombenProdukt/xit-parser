@@ -11,6 +11,15 @@ and this project adheres to
 ## [Unreleased]
 
 
+<a name="1.1.0"></a>
+
+## [1.1.0] - 2023-07-08
+
+### Added
+
+- Colors for document renderer  ### Changed
+
+- Move Renderer into `Renderer` namespace - Move Parser into `Parser` namespace - Move DTOs into `Data` namespace - Merge all regular expressions into `RegularExpression` class  
 <a name="1.0.3"></a>
 
 ## [1.0.3] - 2023-07-08
@@ -32,4 +41,4 @@ and this project adheres to
 
 ## 1.0.0 - 2023-07-08
 
- [Unreleased]: https://github.com/BombenProdukt/package_slug/compare/1.0.3...HEAD [1.0.3]: https://github.com/BombenProdukt/package_slug/compare/1.0.2...1.0.3 [1.0.2]: https://github.com/BombenProdukt/package_slug/compare/1.0.1...1.0.2 [1.0.1]: https://github.com/BombenProdukt/package_slug/compare/1.0.0...1.0.1 
+ [Unreleased]: https://github.com/BombenProdukt/package_slug/compare/1.1.0...HEAD [1.1.0]: https://github.com/BombenProdukt/package_slug/compare/1.0.3...1.1.0 [1.0.3]: https://github.com/BombenProdukt/package_slug/compare/1.0.2...1.0.3 [1.0.2]: https://github.com/BombenProdukt/package_slug/compare/1.0.1...1.0.2 [1.0.1]: https://github.com/BombenProdukt/package_slug/compare/1.0.0...1.0.1 
