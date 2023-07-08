@@ -22,7 +22,7 @@ final readonly class DocumentParser
         $xitLines = \explode("\n", $content);
 
         foreach ($xitLines as $idx => $line) {
-            if (\preg_match(LineTypePattern::TITLE, $line)) {
+            if (\preg_match(RegularExpression::TITLE, $line)) {
                 $this->addXitObjectGroupLine($currentGroup, Constant::TITLE_TYPE, null, $line);
 
                 $prevItemType = Constant::TITLE_TYPE;
@@ -30,7 +30,7 @@ final readonly class DocumentParser
                 continue;
             }
 
-            if (\preg_match(LineTypePattern::OPEN_ITEM, $line)) {
+            if (\preg_match(RegularExpression::OPEN_ITEM, $line)) {
                 $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OPEN, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
@@ -38,7 +38,7 @@ final readonly class DocumentParser
                 continue;
             }
 
-            if (\preg_match(LineTypePattern::CHECKED_ITEM, $line)) {
+            if (\preg_match(RegularExpression::CHECKED_ITEM, $line)) {
                 $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_CHECKED, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
@@ -46,7 +46,7 @@ final readonly class DocumentParser
                 continue;
             }
 
-            if (\preg_match(LineTypePattern::ONGOING_ITEM, $line)) {
+            if (\preg_match(RegularExpression::ONGOING_ITEM, $line)) {
                 $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_ONGOING, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
@@ -54,7 +54,7 @@ final readonly class DocumentParser
                 continue;
             }
 
-            if (\preg_match(LineTypePattern::OBSOLETE_ITEM, $line)) {
+            if (\preg_match(RegularExpression::OBSOLETE_ITEM, $line)) {
                 $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OBSOLETE, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
@@ -62,7 +62,7 @@ final readonly class DocumentParser
                 continue;
             }
 
-            if (\preg_match(LineTypePattern::IN_QUESTION_ITEM, $line)) {
+            if (\preg_match(RegularExpression::IN_QUESTION_ITEM, $line)) {
                 $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_IN_QUESTION, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
@@ -70,7 +70,7 @@ final readonly class DocumentParser
                 continue;
             }
 
-            if (($prevItemType === Constant::ITEM_TYPE || $prevItemType === Constant::ITEM_DETAILS_TYPE) && \preg_match(LineTypePattern::ITEM_DETAILS, $line)) {
+            if (($prevItemType === Constant::ITEM_TYPE || $prevItemType === Constant::ITEM_DETAILS_TYPE) && \preg_match(RegularExpression::ITEM_DETAILS, $line)) {
                 $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_DETAILS_TYPE, null, $line);
 
                 $prevItemType = Constant::ITEM_DETAILS_TYPE;
@@ -102,36 +102,36 @@ final readonly class DocumentParser
         if ($type === Constant::ITEM_TYPE) {
             switch ($status) {
                 case Constant::ITEM_STATUS_OPEN:
-                    $readableContent = \preg_replace(LineStatusDelimiterPattern::OPEN, '', $readableContent);
+                    $readableContent = \preg_replace(RegularExpression::OPEN_ITEM, '', $readableContent);
 
                     break;
 
                 case Constant::ITEM_STATUS_CHECKED:
-                    $readableContent = \preg_replace(LineStatusDelimiterPattern::CHECKED, '', $readableContent);
+                    $readableContent = \preg_replace(RegularExpression::CHECKED_ITEM, '', $readableContent);
 
                     break;
 
                 case Constant::ITEM_STATUS_ONGOING:
-                    $readableContent = \preg_replace(LineStatusDelimiterPattern::ONGOING, '', $readableContent);
+                    $readableContent = \preg_replace(RegularExpression::ONGOING_ITEM, '', $readableContent);
 
                     break;
 
                 case Constant::ITEM_STATUS_OBSOLETE:
-                    $readableContent = \preg_replace(LineStatusDelimiterPattern::OBSOLETE, '', $readableContent);
+                    $readableContent = \preg_replace(RegularExpression::OBSOLETE_ITEM, '', $readableContent);
 
                     break;
 
                 case Constant::ITEM_STATUS_IN_QUESTION:
-                    $readableContent = \preg_replace(LineStatusDelimiterPattern::IN_QUESTION, '', $readableContent);
+                    $readableContent = \preg_replace(RegularExpression::IN_QUESTION_ITEM, '', $readableContent);
 
                     break;
             }
         }
 
         if ($type === Constant::ITEM_TYPE || $type === Constant::ITEM_DETAILS_TYPE) {
-            $readableContent = \preg_replace(LineModifierPattern::PRIORITY, '', $readableContent);
-            $readableContent = \preg_replace(LineModifierPattern::DUE_DATE, '', $readableContent);
-            $readableContent = \preg_replace(LineModifierPattern::TAG, '', $readableContent);
+            $readableContent = \preg_replace(RegularExpression::PRIORITY, '', $readableContent);
+            $readableContent = \preg_replace(RegularExpression::DUE_DATE, '', $readableContent);
+            $readableContent = \preg_replace(RegularExpression::TAG, '', $readableContent);
         }
 
         $trimmedRawContent = \preg_replace("/[\n\r]*$/", '', $content);

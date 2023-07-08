@@ -10,10 +10,10 @@ final readonly class ModifierParser
     {
         $modifiers = new DocumentItemModifiers();
 
-        \preg_match(LineModifierPattern::PRIORITY_LINE, $content, $hasPriority);
+        \preg_match(RegularExpression::PRIORITY_LINE, $content, $hasPriority);
 
         if ($hasPriority) {
-            \preg_match(LineModifierPattern::PRIORITY, \trim($hasPriority[0]), $priority);
+            \preg_match(RegularExpression::PRIORITY, \trim($hasPriority[0]), $priority);
 
             if ($priority) {
                 $modifiers->setHasPriority(true);
@@ -22,13 +22,13 @@ final readonly class ModifierParser
             }
         }
 
-        \preg_match(LineModifierPattern::DUE_DATE, $content, $due);
+        \preg_match(RegularExpression::DUE_DATE, $content, $due);
 
         if ($due) {
             $modifiers->setDue($due[0]);
         }
 
-        \preg_match_all(LineModifierPattern::TAG, $content, $tags);
+        \preg_match_all(RegularExpression::TAG, $content, $tags);
 
         if (\is_array($tags)) {
             $modifiers->setTags($tags[0]);
