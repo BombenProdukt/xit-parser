@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\Xit;
+namespace BombenProdukt\Xit\Parser;
 
 use BombenProdukt\Xit\Data\DocumentItemModifiers;
+use BombenProdukt\Xit\RegularExpression;
 
 final readonly class ModifierParser
 {

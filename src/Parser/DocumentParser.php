@@ -2,16 +2,23 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\Xit;
+namespace BombenProdukt\Xit\Parser;
 
+use BombenProdukt\Xit\Constant;
 use BombenProdukt\Xit\Data\Document;
 use BombenProdukt\Xit\Data\DocumentGroup;
 use BombenProdukt\Xit\Data\DocumentItem;
+use BombenProdukt\Xit\RegularExpression;
 use Exception;
 
 final readonly class DocumentParser
 {
-    public function __construct(private ModifierParser $modifierParser) {}
+    private ModifierParser $modifierParser;
+
+    public function __construct()
+    {
+        $this->modifierParser = new ModifierParser();
+    }
 
     public function parse(string $content): Document
     {

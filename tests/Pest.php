@@ -43,7 +43,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something(): void
+function xit(): string
 {
-    // ..
+    return \file_get_contents(__DIR__.'/Fixtures/test.xit');
 }
