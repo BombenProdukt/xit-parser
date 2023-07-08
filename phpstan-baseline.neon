@@ -76,8 +76,18 @@ parameters:
 			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
+			message: "#^Parameter \\#1 \\$status of method BombenProdukt\\\\Xit\\\\Renderer\\\\AbstractHtmlRenderer\\:\\:renderItem\\(\\) expects BombenProdukt\\\\Xit\\\\Enum\\\\ItemStatus, BombenProdukt\\\\Xit\\\\Enum\\\\ItemStatus\\|null given\\.$#"
+			count: 2
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
 			message: "#^Parameter \\#1 \\$text of method BombenProdukt\\\\Xit\\\\Renderer\\\\AbstractHtmlRenderer\\:\\:createTitleElement\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Variable \\$currentItemStatus might not be defined\\.$#"
+			count: 2
 			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-

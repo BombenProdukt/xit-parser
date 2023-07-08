@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BombenProdukt\Xit\Renderer;
 
 use BombenProdukt\Xit\Data\Document;
+use BombenProdukt\Xit\Data\DocumentItem;
 use BombenProdukt\Xit\Element\ElementInterface;
 use BombenProdukt\Xit\Enum\ItemStatus;
 use BombenProdukt\Xit\Enum\ItemType;
@@ -16,53 +17,42 @@ abstract readonly class AbstractHtmlRenderer implements RendererInterface
         $rendered = '';
 
         foreach ($document->getGroups() as $group) {
-            foreach ($group->getItems() as $line) {
-                if ($line->getType() === ItemType::Title) {
-                    $rendered .= $this->createTitleElement($line->getContent());
+            $items = $group->getItems();
+
+            $currentItemContent = '';
+
+            foreach ($items as $itemIndex => $item) {
+                if ($item->getType() === ItemType::Title) {
+                    $rendered .= $this->createTitleElement($item->getContent());
 
                     continue;
                 }
 
-                if ($line->getType() === ItemType::Item || $line->getType() === ItemType::ItemDetails) {
-                    $lineContent = '';
+                if ($item->getType() === ItemType::Item) {
+                    $currentItemStatus = $item->getStatus();
+                    $currentItemContent .= $this->parseItem($item);
+                }
 
-                    if ($line->getModifiers()->getHasPriority()) {
-                        $priority = '';
+                if ($item->getType() === ItemType::ItemDetails) {
+                    $currentItemContent .= $this->parseItem($item).'<br>';
+                }
 
-                        for ($priorityPadding = 1; $priorityPadding <= $line->getModifiers()->getPriorityPadding(); $priorityPadding++) {
-                            $priority .= '.';
-                        }
+                // We are reaching a new item...
+                $nextLine = $items[$itemIndex + 1] ?? null;
 
-                        for ($priorityLevel = 1; $priorityLevel <= $line->getModifiers()->getPriorityLevel(); $priorityLevel++) {
-                            $priority .= '!';
-                        }
+                if ($nextLine?->getType() === ItemType::Item) {
+                    $rendered .= $this->renderItem($currentItemStatus, \trim($currentItemContent, '<br>'));
 
-                        $lineContent .= $this->createPriorityElement($priority).' ';
-                    }
+                    $currentItemContent = '';
 
-                    $lineContent .= $line->getContent();
+                    continue;
+                }
 
-                    if (\count($line->getModifiers()->getTags())) {
-                        foreach ($line->getModifiers()->getTags() as $tag) {
-                            $lineContent .= $this->createTagElement($tag).' ';
-                        }
-                    }
+                // We reached the final item for this group...
+                if (\count($items) === $itemIndex + 1) {
+                    $rendered .= $this->renderItem($currentItemStatus, \trim($currentItemContent, '<br>'));
 
-                    if ($line->getModifiers()->getDue() !== null) {
-                        $lineContent .= $this->createDueElement($line->getModifiers()->getDue());
-                    }
-
-                    if ($line->getStatus()) {
-                        $rendered .= match ($line->getStatus()) {
-                            ItemStatus::Open => $this->createOpenElement($lineContent),
-                            ItemStatus::Checked => $this->createCheckedElement($lineContent),
-                            ItemStatus::Ongoing => $this->createOngoingElement($lineContent),
-                            ItemStatus::Obsolete => $this->createObsoleteElement($lineContent),
-                            ItemStatus::InQuestion => $this->createInQuestionElement($lineContent),
-                        };
-                    } else {
-                        $rendered .= $line->getContent().' ';
-                    }
+                    $currentItemContent = '';
                 }
             }
         }
@@ -87,4 +77,48 @@ abstract readonly class AbstractHtmlRenderer implements RendererInterface
     abstract protected function createTagElement(string $text): ElementInterface;
 
     abstract protected function createTitleElement(string $text): ElementInterface;
+
+    private function parseItem(DocumentItem $item): string
+    {
+        $itemContent = '';
+
+        if ($item->getModifiers()->getHasPriority()) {
+            $priority = '';
+
+            for ($priorityPadding = 1; $priorityPadding <= $item->getModifiers()->getPriorityPadding(); $priorityPadding++) {
+                $priority .= '.';
+            }
+
+            for ($priorityLevel = 1; $priorityLevel <= $item->getModifiers()->getPriorityLevel(); $priorityLevel++) {
+                $priority .= '!';
+            }
+
+            $itemContent .= $this->createPriorityElement($priority).' ';
+        }
+
+        $itemContent .= $item->getContent();
+
+        if (\count($item->getModifiers()->getTags())) {
+            foreach ($item->getModifiers()->getTags() as $tag) {
+                $itemContent .= $this->createTagElement($tag).' ';
+            }
+        }
+
+        if ($item->getModifiers()->getDue() !== null) {
+            $itemContent .= $this->createDueElement($item->getModifiers()->getDue());
+        }
+
+        return $itemContent;
+    }
+
+    private function renderItem(ItemStatus $status, string $content): ElementInterface
+    {
+        return match ($status) {
+            ItemStatus::Open => $this->createOpenElement($content),
+            ItemStatus::Checked => $this->createCheckedElement($content),
+            ItemStatus::Ongoing => $this->createOngoingElement($content),
+            ItemStatus::Obsolete => $this->createObsoleteElement($content),
+            ItemStatus::InQuestion => $this->createInQuestionElement($content),
+        };
+    }
 }
