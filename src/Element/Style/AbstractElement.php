@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Element\Style;
 
-use Stringable;
+use BombenProdukt\Xit\Element\ElementInterface;
 
-abstract class AbstractElement implements Stringable
+abstract class AbstractElement implements ElementInterface
 {
     public function __construct(private readonly string $text)
     {

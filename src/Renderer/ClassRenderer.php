@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Renderer;
 
-use BombenProdukt\Xit\Data\Document;
 use BombenProdukt\Xit\Element\Class\Checked;
 use BombenProdukt\Xit\Element\Class\Due;
 use BombenProdukt\Xit\Element\Class\InQuestion;
@@ -14,65 +13,52 @@ use BombenProdukt\Xit\Element\Class\Open;
 use BombenProdukt\Xit\Element\Class\Priority;
 use BombenProdukt\Xit\Element\Class\Tag;
 use BombenProdukt\Xit\Element\Class\Title;
-use BombenProdukt\Xit\Enum\ItemStatus;
-use BombenProdukt\Xit\Enum\ItemType;
+use BombenProdukt\Xit\Element\ElementInterface;
 
-final readonly class ClassRenderer implements RendererInterface
+final readonly class ClassRenderer extends AbstractHtmlRenderer
 {
-    public function render(Document $document): string
+    protected function createCheckedElement(string $text): ElementInterface
     {
-        $rendered = '';
+        return Checked::fromString($text);
+    }
 
-        foreach ($document->getGroups() as $group) {
-            foreach ($group->getItems() as $line) {
-                if ($line->getType() === ItemType::Title) {
-                    $rendered .= Title::fromString($line->getContent());
+    protected function createDueElement(string $text): ElementInterface
+    {
+        return Due::fromString($text);
+    }
 
-                    continue;
-                }
+    protected function createInQuestionElement(string $text): ElementInterface
+    {
+        return InQuestion::fromString($text);
+    }
 
-                if ($line->getType() === ItemType::Item || $line->getType() === ItemType::ItemDetails) {
-                    $lineContent = '';
+    protected function createObsoleteElement(string $text): ElementInterface
+    {
+        return Obsolete::fromString($text);
+    }
 
-                    if ($line->getModifiers()->getHasPriority()) {
-                        $priority = '';
+    protected function createOngoingElement(string $text): ElementInterface
+    {
+        return Ongoing::fromString($text);
+    }
 
-                        for ($priorityPadding = 1; $priorityPadding <= $line->getModifiers()->getPriorityPadding(); $priorityPadding++) {
-                            $priority .= '.';
-                        }
+    protected function createOpenElement(string $text): ElementInterface
+    {
+        return Open::fromString($text);
+    }
 
-                        for ($priorityLevel = 1; $priorityLevel <= $line->getModifiers()->getPriorityLevel(); $priorityLevel++) {
-                            $priority .= '!';
-                        }
+    protected function createPriorityElement(string $text): ElementInterface
+    {
+        return Priority::fromString($text);
+    }
 
-                        $lineContent .= Priority::fromString($priority).' ';
-                    }
+    protected function createTagElement(string $text): ElementInterface
+    {
+        return Tag::fromString($text);
+    }
 
-                    if ($line->getStatus()) {
-                        $rendered .= match ($line->getStatus()) {
-                            ItemStatus::Open => Open::fromString($line->getContent()),
-                            ItemStatus::Checked => Checked::fromString($line->getContent()),
-                            ItemStatus::Ongoing => Ongoing::fromString($line->getContent()),
-                            ItemStatus::Obsolete => Obsolete::fromString($line->getContent()),
-                            ItemStatus::InQuestion => InQuestion::fromString($line->getContent()),
-                        };
-                    } else {
-                        $rendered .= $line->getContent().' ';
-                    }
-
-                    if (\count($line->getModifiers()->getTags())) {
-                        foreach ($line->getModifiers()->getTags() as $tag) {
-                            $rendered .= Tag::fromString($tag).' ';
-                        }
-                    }
-
-                    if ($line->getModifiers()->getDue() !== null) {
-                        $rendered .= Due::fromString($line->getModifiers()->getDue());
-                    }
-                }
-            }
-        }
-
-        return \trim($rendered);
+    protected function createTitleElement(string $text): ElementInterface
+    {
+        return Title::fromString($text);
     }
 }
