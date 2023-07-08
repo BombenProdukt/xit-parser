@@ -11,10 +11,10 @@ final class DocumentItem implements Arrayable, JsonSerializable
 {
     public function __construct(
         private string $type,
-        private ?string $status,
-        private string $content,
-        private string $rawContent,
-        private ?DocumentItemModifiers $modifiers,
+        private ?string $status = null,
+        private ?string $content = null,
+        private ?string $rawContent = null,
+        private ?DocumentItemModifiers $modifiers = null,
     ) {}
 
     public function getType(): string

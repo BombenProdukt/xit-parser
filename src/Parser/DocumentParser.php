@@ -33,7 +33,7 @@ final readonly class DocumentParser
 
         foreach ($xitLines as $idx => $line) {
             if (\preg_match(RegularExpression::TITLE, $line)) {
-                $this->addXitObjectGroupLine($currentGroup, Constant::TITLE_TYPE, null, $line);
+                $this->addDocumentItem($currentGroup, Constant::TITLE_TYPE, null, $line);
 
                 $prevItemType = Constant::TITLE_TYPE;
 
@@ -41,7 +41,7 @@ final readonly class DocumentParser
             }
 
             if (\preg_match(RegularExpression::OPEN_ITEM, $line)) {
-                $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OPEN, $line);
+                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OPEN, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
 
@@ -49,7 +49,7 @@ final readonly class DocumentParser
             }
 
             if (\preg_match(RegularExpression::CHECKED_ITEM, $line)) {
-                $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_CHECKED, $line);
+                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_CHECKED, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
 
@@ -57,7 +57,7 @@ final readonly class DocumentParser
             }
 
             if (\preg_match(RegularExpression::ONGOING_ITEM, $line)) {
-                $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_ONGOING, $line);
+                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_ONGOING, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
 
@@ -65,7 +65,7 @@ final readonly class DocumentParser
             }
 
             if (\preg_match(RegularExpression::OBSOLETE_ITEM, $line)) {
-                $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OBSOLETE, $line);
+                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OBSOLETE, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
 
@@ -73,7 +73,7 @@ final readonly class DocumentParser
             }
 
             if (\preg_match(RegularExpression::IN_QUESTION_ITEM, $line)) {
-                $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_IN_QUESTION, $line);
+                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_IN_QUESTION, $line);
 
                 $prevItemType = Constant::ITEM_TYPE;
 
@@ -81,7 +81,7 @@ final readonly class DocumentParser
             }
 
             if (($prevItemType === Constant::ITEM_TYPE || $prevItemType === Constant::ITEM_DETAILS_TYPE) && \preg_match(RegularExpression::ITEM_DETAILS, $line)) {
-                $this->addXitObjectGroupLine($currentGroup, Constant::ITEM_DETAILS_TYPE, null, $line);
+                $this->addDocumentItem($currentGroup, Constant::ITEM_DETAILS_TYPE, null, $line);
 
                 $prevItemType = Constant::ITEM_DETAILS_TYPE;
 
@@ -105,7 +105,7 @@ final readonly class DocumentParser
         return new Document($content, $groups);
     }
 
-    private function addXitObjectGroupLine(DocumentGroup $documentGroup, string $type, ?string $status, string $content): void
+    private function addDocumentItem(DocumentGroup $documentGroup, string $type, ?string $status, string $content): void
     {
         $readableContent = $content;
 
@@ -144,16 +144,28 @@ final readonly class DocumentParser
             $readableContent = \preg_replace(RegularExpression::TAG, '', $readableContent);
         }
 
+        $documentItem = new DocumentItem($type, $status);
+
+        if ($type === Constant::NEWLINE_TYPE) {
+            $documentItem->setContent("\n");
+        } else {
+            $documentItem->setContent(\trim(\preg_replace("/[\n\r]*$/", '', $readableContent)));
+        }
+
         $trimmedRawContent = \preg_replace("/[\n\r]*$/", '', $content);
 
-        $documentGroup->addItem(
-            new DocumentItem(
-                type: $type,
-                status: $status,
-                content: ($type === Constant::NEWLINE_TYPE ? "\n" : \trim(\preg_replace("/[\n\r]*$/", '', $readableContent))),
-                rawContent: ($type === Constant::NEWLINE_TYPE ? "\n" : $trimmedRawContent),
-                modifiers: (($type === Constant::TITLE_TYPE || $type === Constant::NEWLINE_TYPE) ? null : $this->modifierParser->parse($trimmedRawContent)),
-            ),
-        );
+        if ($type === Constant::NEWLINE_TYPE) {
+            $documentItem->setRawContent("\n");
+        } else {
+            $documentItem->setRawContent($trimmedRawContent);
+        }
+
+        if ($type === Constant::TITLE_TYPE || $type === Constant::NEWLINE_TYPE) {
+            $documentItem->setModifiers(null);
+        } else {
+            $documentItem->setModifiers($this->modifierParser->parse($trimmedRawContent));
+        }
+
+        $documentGroup->addItem($documentItem);
     }
 }
