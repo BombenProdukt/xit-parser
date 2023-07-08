@@ -11,6 +11,13 @@ and this project adheres to
 ## [Unreleased]
 
 
+<a name="1.2.0"></a>
+
+## [1.2.0] - 2023-07-08
+
+### Changed
+
+- Move characters and states into respective enums - Improve readability of document item creation process  
 <a name="1.1.0"></a>
 
 ## [1.1.0] - 2023-07-08
@@ -41,4 +48,4 @@ and this project adheres to
 
 ## 1.0.0 - 2023-07-08
 
- [Unreleased]: https://github.com/BombenProdukt/package_slug/compare/1.1.0...HEAD [1.1.0]: https://github.com/BombenProdukt/package_slug/compare/1.0.3...1.1.0 [1.0.3]: https://github.com/BombenProdukt/package_slug/compare/1.0.2...1.0.3 [1.0.2]: https://github.com/BombenProdukt/package_slug/compare/1.0.1...1.0.2 [1.0.1]: https://github.com/BombenProdukt/package_slug/compare/1.0.0...1.0.1 
+ [Unreleased]: https://github.com/BombenProdukt/package_slug/compare/1.2.0...HEAD [1.2.0]: https://github.com/BombenProdukt/package_slug/compare/1.1.0...1.2.0 [1.1.0]: https://github.com/BombenProdukt/package_slug/compare/1.0.3...1.1.0 [1.0.3]: https://github.com/BombenProdukt/package_slug/compare/1.0.2...1.0.3 [1.0.2]: https://github.com/BombenProdukt/package_slug/compare/1.0.1...1.0.2 [1.0.1]: https://github.com/BombenProdukt/package_slug/compare/1.0.0...1.0.1 
