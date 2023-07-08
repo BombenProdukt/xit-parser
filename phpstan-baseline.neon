@@ -46,11 +46,6 @@ parameters:
 			path: src/Parser/DocumentParser.php
 
 		-
-			message: "#^Parameter \\$rawContent of class BombenProdukt\\\\Xit\\\\Data\\\\DocumentItem constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Parser/DocumentParser.php
-
-		-
 			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 2
 			path: src/Renderer/DocumentRenderer.php

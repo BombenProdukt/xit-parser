@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Renderer;
 
-use BombenProdukt\Xit\Constant;
 use BombenProdukt\Xit\Data\Document;
+use BombenProdukt\Xit\Enum\ItemStatus;
+use BombenProdukt\Xit\Enum\ItemStatusCharacter;
+use BombenProdukt\Xit\Enum\ItemType;
 
 final readonly class DocumentRenderer
 {
@@ -15,36 +17,36 @@ final readonly class DocumentRenderer
 
         foreach ($document->getGroups() as $group) {
             foreach ($group->getItems() as $line) {
-                if ($line->getType() === Constant::TITLE_TYPE) {
+                if ($line->getType() === ItemType::Title) {
                     $rendered .= $line->getContent()."\n";
 
                     continue;
                 }
 
-                if ($line->getType() === Constant::ITEM_TYPE || Constant::ITEM_DETAILS_TYPE) {
+                if ($line->getType() === ItemType::Item || ItemType::ItemDetails) {
                     switch ($line->getStatus()) {
-                        case Constant::ITEM_STATUS_OPEN:
-                            $rendered .= Constant::ITEM_LEFT_SYM.Constant::ITEM_STATUS_OPEN_SYM.Constant::ITEM_RIGHT_SYM.' ';
+                        case ItemStatus::Open:
+                            $rendered .= \sprintf('[%s] ', ItemStatusCharacter::Open->value);
 
                             break;
 
-                        case Constant::ITEM_STATUS_CHECKED:
-                            $rendered .= Constant::ITEM_LEFT_SYM.Constant::ITEM_STATUS_CHECKED_SYM.Constant::ITEM_RIGHT_SYM.' ';
+                        case ItemStatus::Checked:
+                            $rendered .= \sprintf('[%s] ', ItemStatusCharacter::Checked->value);
 
                             break;
 
-                        case Constant::ITEM_STATUS_ONGOING:
-                            $rendered .= Constant::ITEM_LEFT_SYM.Constant::ITEM_STATUS_ONGOING_SYM.Constant::ITEM_RIGHT_SYM.' ';
+                        case ItemStatus::Ongoing:
+                            $rendered .= \sprintf('[%s] ', ItemStatusCharacter::Ongoing->value);
 
                             break;
 
-                        case Constant::ITEM_STATUS_OBSOLETE:
-                            $rendered .= Constant::ITEM_LEFT_SYM.Constant::ITEM_STATUS_OBSOLETE_SYM.Constant::ITEM_RIGHT_SYM.' ';
+                        case ItemStatus::Obsolete:
+                            $rendered .= \sprintf('[%s] ', ItemStatusCharacter::Obsolete->value);
 
                             break;
 
-                        case Constant::ITEM_STATUS_IN_QUESTION:
-                            $rendered .= Constant::ITEM_LEFT_SYM.Constant::ITEM_STATUS_IN_QUESTION_SYM.Constant::ITEM_RIGHT_SYM.' ';
+                        case ItemStatus::InQuestion:
+                            $rendered .= \sprintf('[%s] ', ItemStatusCharacter::InQuestion->value);
 
                             break;
                     }

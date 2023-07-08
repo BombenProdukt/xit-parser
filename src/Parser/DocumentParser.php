@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace BombenProdukt\Xit\Parser;
 
-use BombenProdukt\Xit\Constant;
 use BombenProdukt\Xit\Data\Document;
 use BombenProdukt\Xit\Data\DocumentGroup;
 use BombenProdukt\Xit\Data\DocumentItem;
+use BombenProdukt\Xit\Enum\ItemStatus;
+use BombenProdukt\Xit\Enum\ItemType;
 use BombenProdukt\Xit\RegularExpression;
 use Exception;
 
@@ -29,61 +30,59 @@ final readonly class DocumentParser
         $currentGroup = new DocumentGroup();
         $groups[] = $currentGroup;
 
-        $xitLines = \explode("\n", $content);
-
-        foreach ($xitLines as $idx => $line) {
+        foreach (\explode("\n", $content) as $lineNumber => $line) {
             if (\preg_match(RegularExpression::TITLE, $line)) {
-                $this->addDocumentItem($currentGroup, Constant::TITLE_TYPE, null, $line);
+                $this->addDocumentItem($currentGroup, ItemType::Title, null, $line);
 
-                $prevItemType = Constant::TITLE_TYPE;
+                $prevItemType = ItemType::Title;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::OPEN_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OPEN, $line);
+                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Open, $line);
 
-                $prevItemType = Constant::ITEM_TYPE;
+                $prevItemType = ItemType::Item;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::CHECKED_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_CHECKED, $line);
+                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Checked, $line);
 
-                $prevItemType = Constant::ITEM_TYPE;
+                $prevItemType = ItemType::Item;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::ONGOING_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_ONGOING, $line);
+                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Ongoing, $line);
 
-                $prevItemType = Constant::ITEM_TYPE;
+                $prevItemType = ItemType::Item;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::OBSOLETE_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_OBSOLETE, $line);
+                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::Obsolete, $line);
 
-                $prevItemType = Constant::ITEM_TYPE;
+                $prevItemType = ItemType::Item;
 
                 continue;
             }
 
             if (\preg_match(RegularExpression::IN_QUESTION_ITEM, $line)) {
-                $this->addDocumentItem($currentGroup, Constant::ITEM_TYPE, Constant::ITEM_STATUS_IN_QUESTION, $line);
+                $this->addDocumentItem($currentGroup, ItemType::Item, ItemStatus::InQuestion, $line);
 
-                $prevItemType = Constant::ITEM_TYPE;
+                $prevItemType = ItemType::Item;
 
                 continue;
             }
 
-            if (($prevItemType === Constant::ITEM_TYPE || $prevItemType === Constant::ITEM_DETAILS_TYPE) && \preg_match(RegularExpression::ITEM_DETAILS, $line)) {
-                $this->addDocumentItem($currentGroup, Constant::ITEM_DETAILS_TYPE, null, $line);
+            if (($prevItemType === ItemType::Item || $prevItemType === ItemType::ItemDetails) && \preg_match(RegularExpression::ITEM_DETAILS, $line)) {
+                $this->addDocumentItem($currentGroup, ItemType::ItemDetails, null, $line);
 
-                $prevItemType = Constant::ITEM_DETAILS_TYPE;
+                $prevItemType = ItemType::ItemDetails;
 
                 continue;
             }
@@ -99,46 +98,46 @@ final readonly class DocumentParser
                 continue;
             }
 
-            throw new Exception("ParserError: One or more lines of provided Xit are invalid starting on L{$idx} with content: {$line}");
+            throw new Exception("One or more lines of provided are invalid starting at L{$lineNumber}: {$line}");
         }
 
         return new Document($content, $groups);
     }
 
-    private function addDocumentItem(DocumentGroup $documentGroup, string $type, ?string $status, string $content): void
+    private function addDocumentItem(DocumentGroup $documentGroup, ItemType $type, ?ItemStatus $status, string $content): void
     {
         $readableContent = $content;
 
-        if ($type === Constant::ITEM_TYPE) {
+        if ($type === ItemType::Item) {
             switch ($status) {
-                case Constant::ITEM_STATUS_OPEN:
+                case ItemStatus::Open:
                     $readableContent = \preg_replace(RegularExpression::OPEN_ITEM, '', $readableContent);
 
                     break;
 
-                case Constant::ITEM_STATUS_CHECKED:
+                case ItemStatus::Checked:
                     $readableContent = \preg_replace(RegularExpression::CHECKED_ITEM, '', $readableContent);
 
                     break;
 
-                case Constant::ITEM_STATUS_ONGOING:
+                case ItemStatus::Ongoing:
                     $readableContent = \preg_replace(RegularExpression::ONGOING_ITEM, '', $readableContent);
 
                     break;
 
-                case Constant::ITEM_STATUS_OBSOLETE:
+                case ItemStatus::Obsolete:
                     $readableContent = \preg_replace(RegularExpression::OBSOLETE_ITEM, '', $readableContent);
 
                     break;
 
-                case Constant::ITEM_STATUS_IN_QUESTION:
+                case ItemStatus::InQuestion:
                     $readableContent = \preg_replace(RegularExpression::IN_QUESTION_ITEM, '', $readableContent);
 
                     break;
             }
         }
 
-        if ($type === Constant::ITEM_TYPE || $type === Constant::ITEM_DETAILS_TYPE) {
+        if ($type === ItemType::Item || $type === ItemType::ItemDetails) {
             $readableContent = \preg_replace(RegularExpression::PRIORITY, '', $readableContent);
             $readableContent = \preg_replace(RegularExpression::DUE_DATE, '', $readableContent);
             $readableContent = \preg_replace(RegularExpression::TAG, '', $readableContent);
@@ -146,7 +145,7 @@ final readonly class DocumentParser
 
         $documentItem = new DocumentItem($type, $status);
 
-        if ($type === Constant::NEWLINE_TYPE) {
+        if ($type === ItemType::Newline) {
             $documentItem->setContent("\n");
         } else {
             $documentItem->setContent(\trim(\preg_replace("/[\n\r]*$/", '', $readableContent)));
@@ -154,13 +153,13 @@ final readonly class DocumentParser
 
         $trimmedRawContent = \preg_replace("/[\n\r]*$/", '', $content);
 
-        if ($type === Constant::NEWLINE_TYPE) {
+        if ($type === ItemType::Newline) {
             $documentItem->setRawContent("\n");
         } else {
             $documentItem->setRawContent($trimmedRawContent);
         }
 
-        if ($type === Constant::TITLE_TYPE || $type === Constant::NEWLINE_TYPE) {
+        if ($type === ItemType::Title || $type === ItemType::Newline) {
             $documentItem->setModifiers(null);
         } else {
             $documentItem->setModifiers($this->modifierParser->parse($trimmedRawContent));
