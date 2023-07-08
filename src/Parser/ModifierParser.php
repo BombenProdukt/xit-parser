@@ -20,8 +20,8 @@ final readonly class ModifierParser
 
             if ($priority) {
                 $modifiers->setHasPriority(true);
-                $modifiers->setPriorityLevel(\mb_strlen(\str_replace('.', '', $priority[0])));
-                $modifiers->setPriorityPadding(\mb_strlen(\str_replace('!', '', $priority[0])));
+                $modifiers->setPriorityLevel(\mb_strlen(\trim(\str_replace('.', '', $priority[0]))));
+                $modifiers->setPriorityPadding(\mb_strlen(\trim(\str_replace('!', '', $priority[0]))));
             }
         }
 

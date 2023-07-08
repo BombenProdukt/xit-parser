@@ -30,7 +30,7 @@ abstract readonly class AbstractHtmlRenderer implements RendererInterface
 
                 if ($item->getType() === ItemType::Item) {
                     $currentItemStatus = $item->getStatus();
-                    $currentItemContent .= $this->parseItem($item);
+                    $currentItemContent = $this->parseItem($item);
                 }
 
                 if ($item->getType() === ItemType::ItemDetails) {
@@ -43,16 +43,12 @@ abstract readonly class AbstractHtmlRenderer implements RendererInterface
                 if ($nextLine?->getType() === ItemType::Item) {
                     $rendered .= $this->renderItem($currentItemStatus, \trim($currentItemContent, '<br>'));
 
-                    $currentItemContent = '';
-
                     continue;
                 }
 
                 // We reached the final item for this group...
                 if (\count($items) === $itemIndex + 1) {
                     $rendered .= $this->renderItem($currentItemStatus, \trim($currentItemContent, '<br>'));
-
-                    $currentItemContent = '';
                 }
             }
         }
@@ -80,39 +76,44 @@ abstract readonly class AbstractHtmlRenderer implements RendererInterface
 
     private function parseItem(DocumentItem $item): string
     {
-        $itemContent = '';
+        $itemContent = $item->getRawContent();
 
         if ($item->getModifiers()->getHasPriority()) {
-            $priority = '';
+            $priority = \str_repeat('.', $item->getModifiers()->getPriorityPadding());
+            $priority .= \str_repeat('!', $item->getModifiers()->getPriorityLevel());
 
-            for ($priorityPadding = 1; $priorityPadding <= $item->getModifiers()->getPriorityPadding(); $priorityPadding++) {
-                $priority .= '.';
-            }
-
-            for ($priorityLevel = 1; $priorityLevel <= $item->getModifiers()->getPriorityLevel(); $priorityLevel++) {
-                $priority .= '!';
-            }
-
-            $itemContent .= $this->createPriorityElement($priority).' ';
+            $itemContent = \str_replace(
+                $priority,
+                (string) $this->createPriorityElement($priority),
+                $itemContent,
+            );
         }
-
-        $itemContent .= $item->getContent();
 
         if (\count($item->getModifiers()->getTags())) {
             foreach ($item->getModifiers()->getTags() as $tag) {
-                $itemContent .= $this->createTagElement($tag).' ';
+                $itemContent = \str_replace(
+                    $tag,
+                    (string) $this->createTagElement($tag),
+                    $itemContent,
+                );
             }
         }
 
         if ($item->getModifiers()->getDue() !== null) {
-            $itemContent .= $this->createDueElement($item->getModifiers()->getDue());
+            $itemContent = \str_replace(
+                $item->getModifiers()->getDue(),
+                (string) $this->createDueElement($item->getModifiers()->getDue()),
+                $itemContent,
+            );
         }
 
-        return $itemContent;
+        return \trim($itemContent);
     }
 
     private function renderItem(ItemStatus $status, string $content): ElementInterface
     {
+        $content = \mb_substr($content, 4);
+
         return match ($status) {
             ItemStatus::Open => $this->createOpenElement($content),
             ItemStatus::Checked => $this->createCheckedElement($content),

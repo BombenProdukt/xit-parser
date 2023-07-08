@@ -52,7 +52,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
-			count: 2
+			count: 3
 			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
@@ -81,8 +81,18 @@ parameters:
 			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
 			message: "#^Parameter \\#1 \\$text of method BombenProdukt\\\\Xit\\\\Renderer\\\\AbstractHtmlRenderer\\:\\:createTitleElement\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 3
 			path: src/Renderer/AbstractHtmlRenderer.php
 
 		-
