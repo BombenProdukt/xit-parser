@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\XitParser;
+namespace BombenProdukt\Xit;
 
 use Illuminate\Contracts\Support\Arrayable;
 use JsonSerializable;

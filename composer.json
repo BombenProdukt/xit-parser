@@ -42,8 +42,8 @@
 	"prefer-stable": true,
 	"autoload": {
 		"psr-4": {
-			"BombenProdukt\\XitParser\\": "src",
-			"BombenProdukt\\XitParser\\Database\\Factories\\": "database/factories"
+			"BombenProdukt\\Xit\\": "src",
+			"BombenProdukt\\Xit\\Database\\Factories\\": "database/factories"
 		}
 	},
 	"autoload-dev": {

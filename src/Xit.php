@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\XitParser;
+namespace BombenProdukt\Xit;
 
 final readonly class Xit
 {
-    public static function parse(string $document): Document
+    public static function parse(string $content): Document
     {
-        return (new DocumentParser(new ModifierParser()))->parse($document);
+        return (new DocumentParser(new ModifierParser()))->parse($content);
     }
 
     public static function render(Document $document): string

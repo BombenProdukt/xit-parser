@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use BombenProdukt\XitParser\DocumentParser;
-use BombenProdukt\XitParser\ModifierParser;
+use BombenProdukt\Xit\DocumentParser;
+use BombenProdukt\Xit\ModifierParser;
 use function Spatie\Snapshots\assertMatchesSnapshot;
 
 it('should parse the document', function (): void {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\XitParser;
+namespace BombenProdukt\Xit;
 
 use Exception;
 
@@ -10,7 +10,7 @@ final readonly class DocumentParser
 {
     public function __construct(private ModifierParser $modifierParser) {}
 
-    public function parse(string $xitString): Document
+    public function parse(string $content): Document
     {
         $groups = [];
 
@@ -19,7 +19,7 @@ final readonly class DocumentParser
         $currentGroup = new DocumentGroup();
         $groups[] = $currentGroup;
 
-        $xitLines = \explode("\n", $xitString);
+        $xitLines = \explode("\n", $content);
 
         foreach ($xitLines as $idx => $line) {
             if (\preg_match(LineTypePattern::TITLE, $line)) {
@@ -92,7 +92,7 @@ final readonly class DocumentParser
             throw new Exception("ParserError: One or more lines of provided Xit are invalid starting on L{$idx} with content: {$line}");
         }
 
-        return new Document($xitString, $groups);
+        return new Document($content, $groups);
     }
 
     private function addXitObjectGroupLine(DocumentGroup $documentGroup, string $type, ?string $status, string $content): void

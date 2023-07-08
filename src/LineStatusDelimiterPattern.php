@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BombenProdukt\XitParser;
+namespace BombenProdukt\Xit;
 
 /**
  * @see https://github.com/jotaen/xit-sublime/blob/main/xit.sublime-syntax

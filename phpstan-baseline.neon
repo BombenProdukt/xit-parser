@@ -1,37 +1,37 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Class BombenProdukt\\\\XitParser\\\\Document implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			message: "#^Class BombenProdukt\\\\Xit\\\\Document implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/Document.php
 
 		-
-			message: "#^Class BombenProdukt\\\\XitParser\\\\DocumentGroup implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			message: "#^Class BombenProdukt\\\\Xit\\\\DocumentGroup implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/DocumentGroup.php
 
 		-
-			message: "#^Method BombenProdukt\\\\XitParser\\\\DocumentGroup\\:\\:getTitle\\(\\) should return string but returns string\\|null\\.$#"
+			message: "#^Method BombenProdukt\\\\Xit\\\\DocumentGroup\\:\\:getTitle\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: src/DocumentGroup.php
 
 		-
-			message: "#^Cannot call method toArray\\(\\) on BombenProdukt\\\\XitParser\\\\DocumentItemModifiers\\|null\\.$#"
+			message: "#^Cannot call method toArray\\(\\) on BombenProdukt\\\\Xit\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
 			path: src/DocumentItem.php
 
 		-
-			message: "#^Class BombenProdukt\\\\XitParser\\\\DocumentItem implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			message: "#^Class BombenProdukt\\\\Xit\\\\DocumentItem implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/DocumentItem.php
 
 		-
-			message: "#^Class BombenProdukt\\\\XitParser\\\\DocumentItemModifiers implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			message: "#^Class BombenProdukt\\\\Xit\\\\DocumentItemModifiers implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/DocumentItemModifiers.php
 
 		-
-			message: "#^Parameter \\#1 \\$content of method BombenProdukt\\\\XitParser\\\\ModifierParser\\:\\:parse\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$content of method BombenProdukt\\\\Xit\\\\ModifierParser\\:\\:parse\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/DocumentParser.php
 
@@ -46,32 +46,32 @@ parameters:
 			path: src/DocumentParser.php
 
 		-
-			message: "#^Parameter \\$rawContent of class BombenProdukt\\\\XitParser\\\\DocumentItem constructor expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\$rawContent of class BombenProdukt\\\\Xit\\\\DocumentItem constructor expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/DocumentParser.php
 
 		-
-			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\XitParser\\\\DocumentItemModifiers\\|null\\.$#"
+			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 2
 			path: src/DocumentRenderer.php
 
 		-
-			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\XitParser\\\\DocumentItemModifiers\\|null\\.$#"
+			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\Xit\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
 			path: src/DocumentRenderer.php
 
 		-
-			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\XitParser\\\\DocumentItemModifiers\\|null\\.$#"
+			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\Xit\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
 			path: src/DocumentRenderer.php
 
 		-
-			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\XitParser\\\\DocumentItemModifiers\\|null\\.$#"
+			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\Xit\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 1
 			path: src/DocumentRenderer.php
 
 		-
-			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\XitParser\\\\DocumentItemModifiers\\|null\\.$#"
+			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\Xit\\\\DocumentItemModifiers\\|null\\.$#"
 			count: 2
 			path: src/DocumentRenderer.php
 
