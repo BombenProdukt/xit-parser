@@ -1,0 +1,61 @@
+content: |
+    [ ] Do this.
+    [ ] Do that.
+    [ ] Do more.
+
+    [x] This is done.
+    [x] And that one.
+    [x] But what for?
+
+    Status
+    [ ] Open.
+    [@] Ongoing.
+    [x] Checked.
+    [~] Obsolete.
+    [?] In Question.
+
+    Items
+    [ ] Items can be grouped.
+    [ ] Groups can have titles.
+    [x] Group titles are optional, though.
+    [ ] Long descriptions can be continued on the next line.
+        And so on.
+        And so forth.
+        (You get the idea.)
+    [ ] Indentation is 4 spaces, by the way.
+
+    Priority
+    [ ] ! This one is important.
+    [ ] !! And this is more important.
+    [ ] !!!!!!! Boy, that escalated quickly.
+    [ ] ....!!! You can pad with dots on either side, for visual alignment.
+    [~] ....... (Should that fancy you.)
+
+    Tagging
+    [ ] Items can be #tagged.
+    [ ] #Multiple #times, #actually.
+    [ ] Tags are case-insensitive, so #this is the same as #THIS.
+    [ ] Tags can also #have=values.
+    [ ] The value #can="be quoted" if it contains spaces #or='punc:tu!a/tion'.
+    [ ] Example use-cases for tags are: #work, #buy, #where=home, #project="192/c", or #created=2023-06-26.
+
+    Due Dates
+    [ ] Do this soon -> 2023-08-17
+    [ ] -> 2023-08-23 This one afterwards.
+    [ ] Things in real life are fuzzy
+        sometimes: -> 2023-08
+    [~] This notation ^^^^^^^ is equivalent to writing -> 2023-08-31, which is the last day of that period.
+    [ ] -> 2023-W27 It works with weeks too.
+    [ ] -> 2023-Q3 Or quarters.
+    [ ] -> 2023 Or years.
+    [x] (To keep things casual, you know.)
+    [ ] And just in case you prefer slashes: there -> 2023/08/20 you go.`
+groups:
+    - { items: [{ type: item, status: open, content: 'Do this.', rawContent: '[ ] Do this.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: open, content: 'Do that.', rawContent: '[ ] Do that.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: open, content: 'Do more.', rawContent: '[ ] Do more.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }] }
+    - { items: [{ type: item, status: checked, content: 'This is done.', rawContent: '[x] This is done.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: checked, content: 'And that one.', rawContent: '[x] And that one.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: checked, content: 'But what for?', rawContent: '[x] But what for?', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }] }
+    - { items: [{ type: title, status: null, content: Status, rawContent: Status, modifiers: null }, { type: item, status: open, content: Open., rawContent: '[ ] Open.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: ongoing, content: Ongoing., rawContent: '[@] Ongoing.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: checked, content: Checked., rawContent: '[x] Checked.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: obsolete, content: Obsolete., rawContent: '[~] Obsolete.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: in-question, content: 'In Question.', rawContent: '[?] In Question.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }] }
+    - { items: [{ type: title, status: null, content: Items, rawContent: Items, modifiers: null }, { type: item, status: open, content: 'Items can be grouped.', rawContent: '[ ] Items can be grouped.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: open, content: 'Groups can have titles.', rawContent: '[ ] Groups can have titles.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: checked, content: 'Group titles are optional, though.', rawContent: '[x] Group titles are optional, though.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: open, content: 'Long descriptions can be continued on the next line.', rawContent: '[ ] Long descriptions can be continued on the next line.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: details, status: null, content: 'And so on.', rawContent: '    And so on.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: details, status: null, content: 'And so forth.', rawContent: '    And so forth.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: details, status: null, content: '(You get the idea.)', rawContent: '    (You get the idea.)', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: open, content: 'Indentation is 4 spaces, by the way.', rawContent: '[ ] Indentation is 4 spaces, by the way.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }] }
+    - { items: [{ type: title, status: null, content: Priority, rawContent: Priority, modifiers: null }, { type: item, status: open, content: 'This one is important.', rawContent: '[ ] ! This one is important.', modifiers: { hasPriority: true, priorityLevel: 2, priorityPadding: 1, due: null, tags: {  } } }, { type: item, status: open, content: 'And this is more important.', rawContent: '[ ] !! And this is more important.', modifiers: { hasPriority: true, priorityLevel: 3, priorityPadding: 1, due: null, tags: {  } } }, { type: item, status: open, content: 'Boy, that escalated quickly.', rawContent: '[ ] !!!!!!! Boy, that escalated quickly.', modifiers: { hasPriority: true, priorityLevel: 8, priorityPadding: 1, due: null, tags: {  } } }, { type: item, status: open, content: 'You can pad with dots on either side, for visual alignment.', rawContent: '[ ] ....!!! You can pad with dots on either side, for visual alignment.', modifiers: { hasPriority: true, priorityLevel: 4, priorityPadding: 5, due: null, tags: {  } } }, { type: item, status: obsolete, content: '(Should that fancy you.)', rawContent: '[~] ....... (Should that fancy you.)', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }] }
+    - { items: [{ type: title, status: null, content: Tagging, rawContent: Tagging, modifiers: null }, { type: item, status: open, content: 'Items can be .', rawContent: '[ ] Items can be #tagged.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: ['#tagged'] } }, { type: item, status: open, content: ', .', rawContent: '[ ] #Multiple #times, #actually.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: ['#Multiple', '#times', '#actually'] } }, { type: item, status: open, content: 'Tags are case-insensitive, so  is the same as .', rawContent: '[ ] Tags are case-insensitive, so #this is the same as #THIS.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: ['#this', '#THIS'] } }, { type: item, status: open, content: 'Tags can also .', rawContent: '[ ] Tags can also #have=values.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: ['#have=values'] } }, { type: item, status: open, content: 'The value  if it contains spaces .', rawContent: "[ ] The value #can=\"be\_quoted\" if it contains spaces #or='punc:tu!a/tion'.", modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: ["#can=\"be\_quoted\"", "#or='punc:tu!a/tion'"] } }, { type: item, status: open, content: 'Example use-cases for tags are: , , , , or =.', rawContent: '[ ] Example use-cases for tags are: #work, #buy, #where=home, #project="192/c", or #created=2023-06-26.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: '2023-06-26', tags: ['#work', '#buy', '#where=home', '#project="192/c"', '#created=2023-06-26'] } }] }
+    - { items: [{ type: title, status: null, content: 'Due Dates', rawContent: 'Due Dates', modifiers: null }, { type: item, status: open, content: 'Do this soon ->', rawContent: '[ ] Do this soon -> 2023-08-17', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: '2023-08-17', tags: {  } } }, { type: item, status: open, content: '->  This one afterwards.', rawContent: '[ ] -> 2023-08-23 This one afterwards.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: '2023-08-23', tags: {  } } }, { type: item, status: open, content: 'Things in real life are fuzzy', rawContent: '[ ] Things in real life are fuzzy', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: details, status: null, content: 'sometimes: ->', rawContent: '    sometimes: -> 2023-08', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: 2023-08, tags: {  } } }, { type: item, status: obsolete, content: 'This notation ^^^^^^^ is equivalent to writing -> , which is the last day of that period.', rawContent: '[~] This notation ^^^^^^^ is equivalent to writing -> 2023-08-31, which is the last day of that period.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: '2023-08-31', tags: {  } } }, { type: item, status: open, content: '->  It works with weeks too.', rawContent: '[ ] -> 2023-W27 It works with weeks too.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: 2023-W27, tags: {  } } }, { type: item, status: open, content: '->  Or quarters.', rawContent: '[ ] -> 2023-Q3 Or quarters.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: 2023-Q3, tags: {  } } }, { type: item, status: open, content: '->  Or years.', rawContent: '[ ] -> 2023 Or years.', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: '2023', tags: {  } } }, { type: item, status: checked, content: '(To keep things casual, you know.)', rawContent: '[x] (To keep things casual, you know.)', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: null, tags: {  } } }, { type: item, status: open, content: 'And just in case you prefer slashes: there ->  you go.`', rawContent: '[ ] And just in case you prefer slashes: there -> 2023/08/20 you go.`', modifiers: { hasPriority: false, priorityLevel: 0, priorityPadding: 0, due: 2023/08/20, tags: {  } } }] }
+    - { items: {  } }

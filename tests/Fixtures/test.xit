@@ -1,0 +1,51 @@
+[ ] Do this.
+[ ] Do that.
+[ ] Do more.
+
+[x] This is done.
+[x] And that one.
+[x] But what for?
+
+Status
+[ ] Open.
+[@] Ongoing.
+[x] Checked.
+[~] Obsolete.
+[?] In Question.
+
+Items
+[ ] Items can be grouped.
+[ ] Groups can have titles.
+[x] Group titles are optional, though.
+[ ] Long descriptions can be continued on the next line.
+    And so on.
+    And so forth.
+    (You get the idea.)
+[ ] Indentation is 4 spaces, by the way.
+
+Priority
+[ ] ! This one is important.
+[ ] !! And this is more important.
+[ ] !!!!!!! Boy, that escalated quickly.
+[ ] ....!!! You can pad with dots on either side, for visual alignment.
+[~] ....... (Should that fancy you.)
+
+Tagging
+[ ] Items can be #tagged.
+[ ] #Multiple #times, #actually.
+[ ] Tags are case-insensitive, so #this is the same as #THIS.
+[ ] Tags can also #have=values.
+[ ] The value #can="be quoted" if it contains spaces #or='punc:tu!a/tion'.
+[ ] Example use-cases for tags are: #work, #buy, #where=home, #project="192/c", or #created=2023-06-26.
+
+Due Dates
+[ ] Do this soon -> 2023-08-17
+[ ] -> 2023-08-23 This one afterwards.
+[ ] Things in real life are fuzzy
+    sometimes: -> 2023-08
+[~] This notation ^^^^^^^ is equivalent to writing -> 2023-08-31, which is the last day of that period.
+[ ] -> 2023-W27 It works with weeks too.
+[ ] -> 2023-Q3 Or quarters.
+[ ] -> 2023 Or years.
+[x] (To keep things casual, you know.)
+[ ] And just in case you prefer slashes: there -> 2023/08/20 you go.`
