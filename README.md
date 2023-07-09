@@ -4,20 +4,6 @@
     </a>
 </p>
 
-<p align="center">
-    <a href="https://github.com/faustbrian/xit/actions">
-        <img src="https://badge.sh/github/check-runs/BombenProdukt/xit" alt="Checks" />
-    </a>
-    <a href="https://packagist.org/packages/bombenprodukt/xit">
-        <img src="https://badge.sh/packagist/downloads/BombenProdukt/xit" alt="Downloads" />
-    </a>
-    <a href="https://packagist.org/packages/bombenprodukt/xit">
-        <img src="https://badge.sh/packagist/version/BombenProdukt/xit" alt="Version" />
-    </a>
-    <a href="https://packagist.org/packages/bombenprodukt/xit">
-        <img src="https://badge.sh/packagist/license/BombenProdukt/xit" alt="License" />
-    </a>
-</p>
 
 ## About [x]it! Parser
 
