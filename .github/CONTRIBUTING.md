@@ -29,7 +29,7 @@ likely to be used by other users of the project.
 ## Guidelines
 
 - Please follow the
-  [Coding Style Guide](https://github.com/BombenProdukt/php-cs-fixer-config/blob/main/src/Presets/Standard.php).
+  [Coding Style Guide](https://github.com/faustbrian/php-cs-fixer-config/blob/main/src/Presets/Standard.php).
 - Ensure that the current tests pass, and if you've added something new, add the
   tests where relevant.
 - Send a coherent commit history, making sure each commit in your pull request
@@ -60,5 +60,5 @@ $ composer test
 
 ## Credits
 
-- [BombenProdukt](https://github.com/BombenProdukt)
+- [BombenProdukt](https://github.com/faustbrian)
 - [All Contributors](../../../contributors)
