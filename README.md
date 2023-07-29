@@ -1,10 +1,3 @@
-<p align="center">
-    <a href="https://bombenprodukt.com" target="_blank">
-        <img src="https://raw.githubusercontent.com/faustbrian/assets/main/logo-text.svg" width="128" alt="BombenProdukt Logo" />
-    </a>
-</p>
-
-
 ## About [x]it! Parser
 
 This project was created by, and is maintained by
