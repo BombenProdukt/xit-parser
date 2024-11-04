@@ -1,0 +1,166 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Class BombenProdukt\\\\Xit\\\\Data\\\\Document implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Data/Document.php
+
+		-
+			message: "#^Class BombenProdukt\\\\Xit\\\\Data\\\\DocumentGroup implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Data/DocumentGroup.php
+
+		-
+			message: "#^Method BombenProdukt\\\\Xit\\\\Data\\\\DocumentGroup\\:\\:getTitle\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/Data/DocumentGroup.php
+
+		-
+			message: "#^Cannot call method toArray\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 1
+			path: src/Data/DocumentItem.php
+
+		-
+			message: "#^Class BombenProdukt\\\\Xit\\\\Data\\\\DocumentItem implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Data/DocumentItem.php
+
+		-
+			message: "#^Class BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers implements generic interface Illuminate\\\\Contracts\\\\Support\\\\Arrayable but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Data/DocumentItemModifiers.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: src/Element/AbstractElement.php
+
+		-
+			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
+			count: 1
+			path: src/Parser/DocumentParser.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
+			count: 7
+			path: src/Parser/DocumentParser.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of method BombenProdukt\\\\Xit\\\\Parser\\\\ModifierParser\\:\\:parse\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Parser/DocumentParser.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Parser/DocumentParser.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 4
+			path: src/Parser/DocumentParser.php
+
+		-
+			message: "#^Call to function is_array\\(\\) with array will always evaluate to true\\.$#"
+			count: 1
+			path: src/Parser/ModifierParser.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, array\\<string\\> given\\.$#"
+			count: 3
+			path: src/Parser/ModifierParser.php
+
+		-
+			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 3
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 2
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\> given\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Parameter \\#1 \\$status of method BombenProdukt\\\\Xit\\\\Renderer\\\\AbstractHtmlRenderer\\:\\:renderItem\\(\\) expects BombenProdukt\\\\Xit\\\\Enum\\\\ItemStatus, BombenProdukt\\\\Xit\\\\Enum\\\\ItemStatus\\|null given\\.$#"
+			count: 2
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of method BombenProdukt\\\\Xit\\\\Renderer\\\\AbstractHtmlRenderer\\:\\:createTitleElement\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 3
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Variable \\$currentItemStatus might not be defined\\.$#"
+			count: 2
+			path: src/Renderer/AbstractHtmlRenderer.php
+
+		-
+			message: "#^Cannot call method getDue\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 2
+			path: src/Renderer/TextRenderer.php
+
+		-
+			message: "#^Cannot call method getHasPriority\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 1
+			path: src/Renderer/TextRenderer.php
+
+		-
+			message: "#^Cannot call method getPriorityLevel\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 1
+			path: src/Renderer/TextRenderer.php
+
+		-
+			message: "#^Cannot call method getPriorityPadding\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 1
+			path: src/Renderer/TextRenderer.php
+
+		-
+			message: "#^Cannot call method getTags\\(\\) on BombenProdukt\\\\Xit\\\\Data\\\\DocumentItemModifiers\\|null\\.$#"
+			count: 2
+			path: src/Renderer/TextRenderer.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\> given\\.$#"
+			count: 1
+			path: src/Renderer/TextRenderer.php
+
+		-
+			message: "#^Only booleans are allowed in \\|\\|, BombenProdukt\\\\Xit\\\\Enum\\\\ItemType\\:\\:ItemContinuation given on the right side\\.$#"
+			count: 1
+			path: src/Renderer/TextRenderer.php
+
+		-
+			message: "#^Right side of \\|\\| is always true\\.$#"
+			count: 1
+			path: src/Renderer/TextRenderer.php
